@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ugly Barista</title>
+        <script src="https://code.jquery.com/jquery-3.4.0.js"></script>
+    </head>
+    <body>
+        <h3>Order something!</h3>
+        <button id="givedrink" onclick="getDrink()">Gimme a drink!</button>
+        <br><br><br>
+        <button id="ratedrink" onclick="rateDrink()">I liked this drink!</button>
+        <script>
+            function getDrink() {
+                $.ajax({
+                    url: "/give-drink?message=I%20want%20something",
+                    method: "GET",
+                    success: data => {
+                        alert("You got a " + data.drink + "!")
+                    },
+                    error: err => {
+                        alert("Something happened! " + err);
+                    }
+                })
+            }
+            function rateDrink() {
+                $.ajax({
+                    url: "/liked-drink",
+                    method: "POST",
+                    data: {
+                        "message": "This was pretty good man"
+                    },
+                    success: data => {
+                        alert("Liked drink! Server says: " + data.message)
+                    },
+                    error: err => {
+                        alert("Something happened! " + err);
+                    }
+                })
+            }
+        </script>
+    </body>
+</html>
