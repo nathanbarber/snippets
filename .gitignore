@@ -1,0 +1,4 @@
+# Ignoring the node_modules directory. This is where all the packages you use in your code are stored.
+# We want to keep the Github repository as clean as possible, and because this folder contains thousands of reinstallable packages,
+# we want to ignore it. To rebuild this folder after downloading the project, cd into /node and type 'npm install'
+**/node_modules
